@@ -1,10 +1,4 @@
-// import { Task } from './Task';
-class Task {
-    id: number = 0;
-    text: string = '';
-    day: string = '';
-    reminder: boolean = true
-} 
+import { Task } from './task';
 
 export const TASKS: Task[] = [
   {
