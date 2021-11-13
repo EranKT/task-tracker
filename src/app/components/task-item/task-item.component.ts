@@ -17,4 +17,7 @@ faTimes = faTimes;
   ngOnInit(): void {
   }
 
+  onDelete(task: Task) {
+    console.log(task);
+  }
 }
