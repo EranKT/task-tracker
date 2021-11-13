@@ -10,7 +10,7 @@ import { TaskService } from '../../services/task/task.service';
 export class TasksComponent implements OnInit {
 
   tasks: Task[] = [];
-  
+
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
@@ -18,9 +18,12 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
-    this.taskService.deleteTask(task).subscribe(
-      () => this.tasks = this.tasks.filter(
+    this.taskService.deleteTask(task)
+    .subscribe(
+      () => this.tasks = this.tasks
+      .filter(
         t => t.id !== task.id
-        ))
+      )
+    )
   }
 }
