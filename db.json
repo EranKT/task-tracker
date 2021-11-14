@@ -23,6 +23,12 @@
       "day": "tomorrow 13:00",
       "reminder": true,
       "id": 5
+    },
+    {
+      "text": "test toggle on add task",
+      "day": "now",
+      "reminder": true,
+      "id": 6
     }
   ]
 }
