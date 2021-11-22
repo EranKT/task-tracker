@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TaskItemComponent } from './task-item.component';
+import { Task } from '../../task';
 
 describe('TaskItemComponent', () => {
   let component: TaskItemComponent;
@@ -16,10 +16,13 @@ describe('TaskItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TaskItemComponent);
     component = fixture.componentInstance;
+    let task: Task = { text: '', day: '', reminder: true };
+    component.task = task;
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
+
     expect(component).toBeTruthy();
   });
 });
