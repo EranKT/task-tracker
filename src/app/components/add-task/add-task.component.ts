@@ -45,7 +45,10 @@ export class AddTaskComponent implements OnInit {
     this.reminder = false;
 
     this.uiService.toggleAddTask();
-
   }
+
+ngOnDestroy(): void {
+this.subscription.unsubscribe();
+}
 
 }
