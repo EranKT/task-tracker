@@ -5,22 +5,20 @@ import { UiService } from '../../services/ui/ui.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  title:string = 'Task Tracker';
+  title: string = 'Task Tracker';
   showNewTaskForm: boolean = false;
   subscription: Subscription;
 
   constructor(private uiService: UiService) {
     this.subscription = this.uiService
-    .onToggle()
-    .subscribe((value) => (this.showNewTaskForm = value));
+      .onToggle()
+      .subscribe((value) => (this.showNewTaskForm = value));
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleAddTask() {
     this.uiService.toggleAddTask();
@@ -28,6 +26,5 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    }
-
+  }
 }

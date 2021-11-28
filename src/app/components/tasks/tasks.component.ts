@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../task';
 import { TaskService } from '../../services/task/task.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss']
+  styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
-
+  subs = new SubSink();
   tasks: Task[] = [];
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => this.tasks = tasks);
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
   deleteTask(task: Task) {
-    this.taskService.deleteTask(task)
-    .subscribe(
-      () => this.tasks = this.tasks
-      .filter(
-        t => t.id !== task.id
-      )
-    )
+    this.taskService
+      .deleteTask(task)
+      .subscribe(
+        () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+      );
   }
 
   toggleReminder(task: Task) {
@@ -35,7 +34,5 @@ export class TasksComponent implements OnInit {
   addTask(task: Task) {
     this.taskService.addTask(task).subscribe((task) => this.tasks.push(task));
   }
-  ngOnDestroy(): void {
-    }
-
+  ngOnDestroy(): void {}
 }
